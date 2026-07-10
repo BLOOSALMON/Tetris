@@ -1,0 +1,249 @@
+.app {
+  padding: 24px;
+}
+
+.game-stage {
+  position: relative;
+  width: 600px;
+  height: 640px;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(46, 147, 201, 0.35);
+}
+
+.beach-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.beach-bg__lemon {
+  animation: beach-bob 4s ease-in-out infinite;
+}
+
+.beach-bg__droplet {
+  animation: beach-bob 3.2s ease-in-out infinite;
+}
+
+@keyframes beach-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .beach-bg__lemon,
+  .beach-bg__droplet {
+    animation: none;
+  }
+}
+
+.game-canvas {
+  position: relative;
+  z-index: 1;
+  line-height: 0;
+}
+
+.hud {
+  position: absolute;
+  z-index: 2;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.hud-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: rgba(18, 50, 71, 0.55);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 14px;
+  padding: 6px 14px;
+}
+
+.hud-stat span {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(255, 248, 232, 0.7);
+}
+
+.hud-stat strong {
+  font-size: 18px;
+  color: #fff8e8;
+  font-variant-numeric: tabular-nums;
+}
+
+.pause-button {
+  margin-left: auto;
+  pointer-events: auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: radial-gradient(circle at 35% 30%, #ffde59, #f2b705);
+  color: #7a5200;
+  font-size: 16px;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+  box-shadow: 0 4px 10px rgba(242, 183, 5, 0.4);
+}
+
+.pause-button:hover {
+  transform: scale(1.06);
+  box-shadow: 0 6px 14px rgba(242, 183, 5, 0.5);
+}
+
+.overlay {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(18, 50, 71, 0.45);
+  backdrop-filter: blur(3px);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 32px 40px;
+  min-width: 260px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 26px;
+  text-align: center;
+  color: #123247;
+  box-shadow: 0 16px 40px rgba(46, 147, 201, 0.25);
+}
+
+.logo-wrap {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 14px;
+}
+
+.logo-wrap::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 72%;
+  height: 14px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse, rgba(18, 20, 24, 0.35), transparent 72%);
+  filter: blur(2px);
+  z-index: -1;
+}
+
+.logo-svg {
+  width: 280px;
+  height: auto;
+  display: block;
+  filter:
+    drop-shadow(0 2px 0 rgba(255, 255, 255, 0.55))
+    drop-shadow(0 10px 14px rgba(15, 16, 20, 0.35));
+}
+
+.logo-svg-text {
+  font-family: 'Gugi', 'Pretendard', sans-serif;
+  font-size: 54px;
+  fill: url(#chrome-gradient);
+  stroke: rgba(30, 32, 36, 0.45);
+  stroke-width: 1px;
+}
+
+.panel h2 {
+  margin: 0 0 4px;
+  font-size: 24px;
+  font-family: 'Gugi', 'Pretendard', sans-serif;
+  color: #123247;
+}
+
+.panel .score {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 4px 0;
+  color: #123247;
+}
+
+.panel .high-score {
+  color: #2b5468;
+  font-size: 13px;
+  margin: 0 0 8px;
+}
+
+.panel .new-record {
+  display: inline-block;
+  color: #fff8e8;
+  background: linear-gradient(135deg, #f5424b, #ff86a8);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  margin: 0 0 8px;
+}
+
+.panel button {
+  width: 100%;
+  padding: 11px 24px;
+  border-radius: 999px;
+  border: 1px solid #cfe7ee;
+  background: #ffffff;
+  color: #123247;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.panel button:hover {
+  border-color: #2e93c9;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(46, 147, 201, 0.2);
+}
+
+.panel button.primary {
+  background: linear-gradient(135deg, #ffde59, #ffa23c);
+  border-color: transparent;
+  color: #5a3900;
+  font-weight: 700;
+  box-shadow: 0 6px 16px rgba(255, 178, 46, 0.4);
+}
+
+.panel button.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 178, 46, 0.5);
+}
+
+.controls-help {
+  margin-top: 8px;
+  color: #2b5468;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.controls-help p {
+  margin: 0;
+}
